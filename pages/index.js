@@ -115,7 +115,7 @@ function Home({ deals }) {
       <HeaderThree />
       <div className="instructionsbox">
         <div className="heading">
-          <img className="inner headingicon" src='/images/burger.svg' alt="me" width="30" height="30" />
+          <Image className="inner headingicon" src='/images/burger.svg' alt="me" width="30" height="30" />
           <p className="inner headingtitle"> Digital Coupons</p>
         </div>
         <p className="headinginstruction">SCAN THE PROMO QR CODE ON BURGER KING KIOSKS</p>
