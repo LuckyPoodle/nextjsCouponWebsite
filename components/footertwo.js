@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Image from 'next/image'
 
 const Footertwo = () => {
   return (
@@ -11,12 +11,12 @@ const Footertwo = () => {
           <h4 className="footermessage1">Make it your way</h4>
           <ul className="list-unstyled list-inline">
             <li className="list-inline-item resize">
-            <img src='/images/google-play-badge.png'  width="320px" height="94px"></img>
+            <Image src='/images/google-play-badge.png' alt="me" width="320px" height="94px"></Image>
           
             </li>
             <li className="list-inline-item resize">
+            <Image src='/images/appstore.png' alt="me" width="320px" height="94px"></Image>
          
-              <img  src='/images/appstore.png' width="320px" height="94px"></img>
             </li>
             <div className="bottomcopyright">
               {/* <div><span>Copyright 2021</span></div> */}

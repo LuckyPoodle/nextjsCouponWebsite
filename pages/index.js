@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react';
 import QRCode from "react-qr-code";
 import { Container, Row, Col, Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import Image from 'next/image'
 import HeaderThree from '../components/headerthree';
 
 import Footertwo from '../components/footertwo';
@@ -165,11 +165,12 @@ function Home({ deals }) {
 
               <Link href="https://play.google.com/store/apps/details?id=com.oddle.burkerkingcustomerapp/" passHref={true}>
              
-              <img src='/images/google-play-badge.png' width="160px" height="47px"></img>
+              <Image src='/images/google-play-badge.png' alt="me" width="160px" height="47px"></Image>
              </Link>
 
              <Link href="https://apps.apple.com/sg/app/burger-king-singapore/id1233020916/" passHref={true}>
-             <img src='/images/appstore.png' width="160px" height="47px"></img>
+             <Image src='/images/appstore.png' alt="me" width="160px" height="47px"></Image>
+        
      
              </Link>
            
