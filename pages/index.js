@@ -167,8 +167,8 @@ function Home({ deals }) {
 
             {deals.map((deal) => (
 
-              <div className="col-lg-4 col-6" style={{ padding: '5px' }}>
-                <DealBox key={deal.id}  deal={deal} toggleModal={toggleModal} />
+              <div key={deal.id} className="col-lg-4 col-6" style={{ padding: '5px' }}>
+                <DealBox  deal={deal} toggleModal={toggleModal} />
               </div>
 
 
