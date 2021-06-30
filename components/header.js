@@ -11,7 +11,7 @@ import {
     NavItem
 } from 'reactstrap';
 
-import Image from 'next/image'
+
 
 const BsNavLink = props => {
     const { href, title } = props;
@@ -34,8 +34,8 @@ const Header = () => {
                 dark
                 expand="md">
                 <div className="navbar-brand">
-
-                        <Image src='/images/burger.svg' alt="me" width="64" height="64"></Image>
+                <img src='/images/burger.svg' width="64px" height="64px"></img>
+              
                 </div>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>

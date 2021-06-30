@@ -11,7 +11,7 @@ import { API_URL } from '../config/index'
 import DealBox from '../components/dealbox'
 import HorizontalDealBox from '../components/horizontaldealbox'
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import Image from 'next/image'
+
 import Modal from 'react-modal';
 import date from 'date-and-time';
 
@@ -115,7 +115,7 @@ function Home({ deals }) {
       <HeaderThree />
       <div className="instructionsbox">
         <div className="heading">
-          <Image className="inner headingicon" src='/images/burger.svg' alt="me" width="30" height="30" />
+          <img className="inner headingicon" src='/images/burger.svg' alt="me" width="30" height="30" />
           <p className="inner headingtitle"> Digital Coupons</p>
         </div>
         <p className="headinginstruction">SCAN THE PROMO QR CODE ON BURGER KING KIOSKS</p>
@@ -203,11 +203,13 @@ function Home({ deals }) {
               </div>
 
               <Link href="https://play.google.com/store/apps/details?id=com.oddle.burkerkingcustomerapp/" passHref={true}>
-              <Image src='/images/google-play-badge.png' alt="me" width="160px" height="47px"></Image>
+             
+              <img src='/images/google-play-badge.png' width="160px" height="47px"></img>
              </Link>
 
              <Link href="https://apps.apple.com/sg/app/burger-king-singapore/id1233020916/" passHref={true}>
-             <Image src='/images/appstore.png' alt="me" width="160px" height="47px"></Image>
+             <img src='/images/appstore.png' width="160px" height="47px"></img>
+     
              </Link>
            
 
