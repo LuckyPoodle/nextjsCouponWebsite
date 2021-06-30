@@ -35,7 +35,7 @@ const HeaderThree = () => {
                 expand="md">
                 <div className="navbar-brand">
 
-                        <Image src='/images/icon_logo-main.png' alt="me" width="100" height="100"></Image>
+                        <Image src='/images/burger.svg' alt="me" width="100" height="100"></Image>
                 </div>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>

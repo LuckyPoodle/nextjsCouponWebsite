@@ -118,7 +118,7 @@ function Home({ deals }) {
           <Image className="inner headingicon" src='/images/burger.svg' alt="me" width="30" height="30" />
           <p className="inner headingtitle"> Digital Coupons</p>
         </div>
-        <p className="headinginstruction">SCAN THE PROMO QR CODE ON BURGER KING KIOSKS</p>
+        <p className="headinginstruction">SCAN THE PROMO QR CODE ON KIOSKS</p>
         {/* <Button onClick={toggleTemp}>TEMPORARY BUTTON Change Deals Layout</Button> */}
 
       </div>
@@ -151,7 +151,7 @@ function Home({ deals }) {
 
 
             <div className="modalcoupon">
-              <span className="modalcouponheading">Redeem Coupon In Burger King App Now</span>
+              <span className="modalcouponheading">Redeem Coupon</span>
               <div className="modalrow">
                 <span className="modalcouponcode">{couponCode.toString()}</span>
 
