@@ -123,46 +123,7 @@ function Home({ deals }) {
 
       </div>
 
-      {tempArrangement ?
-        <Container className="container">
-
-          {deals.map((deal) => (
-            <HorizontalDealBox key={deal.id}  deal={deal} toggleModal={toggleModal} />
-          ))}
-
-
-          <Modal
-            isOpen={modal}
-            onRequestClose={toggleModal}
-            style={customStyles}
-            contentLabel="Redeem Coupon"
-          >
-            <div className="d-flex justify-content-center">
-              <QRCode value={couponCode} />
-
-            </div>
-
-          </Modal>
-
-
-          {/* <Modal isOpen={modal} toggle={toggleModal} >
-    <ModalHeader >Redeem Deal</ModalHeader>
-    <ModalBody>
-      <div className="d-flex justify-content-center">
-        <QRCode value={couponCode} />
-
-      </div>
-
-
-    </ModalBody>
-    <ModalFooter>
-
-      <Button style={{"background-color":"#0033A0"}} onClick={toggleModal}>Close</Button>
-    </ModalFooter>
-  </Modal> */}
-        </Container>
-
-        : <Container className="container">
+      {deals==null?<span>No Deals Yet</span>: <Container className="container">
           <div className="row">
 
             {deals.map((deal) => (
@@ -220,9 +181,9 @@ function Home({ deals }) {
           </Modal>
 
 
-        </Container>
+        </Container>}
 
-      }
+      
 
       <Footertwo />
 
