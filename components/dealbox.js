@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { API_URL } from '../config/index'
 import {
     Card, Button, CardImg, CardTitle, CardText, CardGroup,
     CardSubtitle, CardBody
@@ -15,7 +15,7 @@ const DealBox = ({deal,toggleModal}) => {
         <CardGroup className="dealboxcard">
         <Card onClick={()=>toggleModal(deal.Code)}  className="justify-content-center align-items-center">
    
-          {deal.Image==null?<></>:<CardImg top width="100%" src={deal.Image.formats.small.url} alt="Card image cap" />}
+          {deal.Image==null?<></>:<CardImg top width="100%" src={API_URL+deal.Image.formats.small.url} alt="Card image cap" />}
           <CardBody>
             <CardTitle tag="h5"className="dealboxtitle">{deal.Title}</CardTitle>
            
