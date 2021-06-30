@@ -1,0 +1,33 @@
+{
+  "name": "myfrontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "11.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "axios": "^0.21.1",
+    "bootstrap": "^5.0.2",
+    "date-and-time": "^1.0.1",
+    "qrcode": "^1.4.4",
+    "react-copy-to-clipboard": "^5.0.3",
+    "react-modal": "^3.14.3",
+    "react-qr-code": "^1.1.1",
+    "react-typed": "^1.2.0",
+    "reactstrap": "^8.9.0",
+    "sass": "^1.35.1"
+  },
+  "devDependencies": {
+    "eslint": "7.29.0",
+    "eslint-config-next": "11.0.1"
+  }
+}
