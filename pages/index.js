@@ -3,10 +3,9 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react';
 import QRCode from "react-qr-code";
 import { Container, Row, Col, Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import Header from '../components/header';
-import Headertwo from '../components/headertwo';
+
 import HeaderThree from '../components/headerthree';
-import Footer from '../components/footer';
+
 import Footertwo from '../components/footertwo';
 import { API_URL } from '../config/index'
 import DealBox from '../components/dealbox'
@@ -128,13 +127,12 @@ function Home({ deals }) {
         <Container className="container">
 
           {deals.map((deal) => (
-            <HorizontalDealBox deal={deal} toggleModal={toggleModal} />
+            <HorizontalDealBox key={deal.id}  deal={deal} toggleModal={toggleModal} />
           ))}
 
 
           <Modal
             isOpen={modal}
-
             onRequestClose={toggleModal}
             style={customStyles}
             contentLabel="Redeem Coupon"
@@ -169,8 +167,8 @@ function Home({ deals }) {
 
             {deals.map((deal) => (
 
-              <div class="col-lg-4 col-6" style={{ padding: '5px' }}>
-                <DealBox deal={deal} toggleModal={toggleModal} />
+              <div className="col-lg-4 col-6" style={{ padding: '5px' }}>
+                <DealBox key={deal.id}  deal={deal} toggleModal={toggleModal} />
               </div>
 
 
