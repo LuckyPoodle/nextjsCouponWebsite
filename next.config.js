@@ -1,5 +1,5 @@
 module.exports={
     images:{
-        domains:['https://media.publit.io']
+        domains:['https://media.publit.io','res.cloudinary.com']
     }
 }
