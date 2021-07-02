@@ -11,11 +11,11 @@ const Footertwo = () => {
           <h4 className="footermessage1">Make it your way</h4>
           <ul className="list-unstyled list-inline">
             <li className="list-inline-item resize">
-            <Image src='/images/google-play-badge.png' alt="me" width="320px" height="94px"></Image>
+            <Image loading="eager" src='/images/google-play-badge.png' alt="me" width="320px" height="94px"></Image>
           
             </li>
             <li className="list-inline-item resize">
-            <Image src='/images/appstore.png' alt="me" width="320px" height="94px"></Image>
+            <Image loading="eager" src='/images/appstore.png' alt="me" width="320px" height="94px"></Image>
          
             </li>
             <div className="bottomcopyright">
