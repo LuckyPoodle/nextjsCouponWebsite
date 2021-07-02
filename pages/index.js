@@ -165,11 +165,11 @@ function Home({ deals }) {
 
               <Link href="https://play.google.com/store/apps/details?id=com.oddle.burkerkingcustomerapp/" passHref={true}>
              
-              <Image src='/images/google-play-badge.png' alt="me" width="160px" height="47px"></Image>
+              <Image loading="eager" src='/images/google-play-badge.png' alt="me" width="160px" height="47px"></Image>
              </Link>
 
              <Link href="https://apps.apple.com/sg/app/burger-king-singapore/id1233020916/" passHref={true}>
-             <Image src='/images/appstore.png' alt="me" width="160px" height="47px"></Image>
+             <Image loading="eager" src='/images/appstore.png' alt="me" width="160px" height="47px"></Image>
         
      
              </Link>

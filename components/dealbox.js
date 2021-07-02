@@ -6,7 +6,7 @@ import {
   } from 'reactstrap';
 
 
-
+//src={API_URL+deal.Image.formats.small.url}
 const DealBox = ({deal,toggleModal}) => {
 
     console.log(deal);
@@ -15,7 +15,7 @@ const DealBox = ({deal,toggleModal}) => {
         <CardGroup className="dealboxcard">
         <Card onClick={()=>toggleModal(deal.Code)}  className="justify-content-center align-items-center">
    
-          {deal.Image==null?<></>:<CardImg top width="100%" src={API_URL+deal.Image.formats.small.url} alt="Card image cap" />}
+          {deal.Image==null?<></>:<CardImg top width="100%" src={deal.Image.formats.small.url} alt="Promo Image" />}
           <CardBody>
             <CardTitle tag="h5"className="dealboxtitle">{deal.Title}</CardTitle>
            
