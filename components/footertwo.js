@@ -20,10 +20,10 @@ const Footertwo = () => {
           
             </li>
             <li className="list-inline-item resize">
-            <Image loading="eager" src='/images/appstore.png' alt="me" width="320px" height="94px"></Image>
+            <Image loader={myLoader} loading="eager" src='/images/appstore.png' alt="me" width="320px" height="94px"></Image>
          
             </li>
-            <div loader={myLoader} className="bottomcopyright">
+            <div className="bottomcopyright">
               {/* <div><span>Copyright 2021</span></div> */}
               <div className="small-font-size">Google Play and the Google Play logo are trademarks of Google LLC.
                 App Store and the App Store logo are trademarks of Apple Inc.</div>
