@@ -44,7 +44,7 @@ function Home({ deals }) {
   Modal.setAppElement('#modalbind');
 
   const myLoader = ({ src, width, quality }) => {
-    return `https://backendserver-kjd9q.ondigitalocean.app/${src}?w=${width}&q=${quality || 75}`
+    return `https://backendserver-kjd9q.ondigitalocean.app${src}?w=${width}&q=${quality || 75}`
   }
   
 
