@@ -24,7 +24,9 @@ const BsNavLink = props => {
 const HeaderThree = () => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
-
+    const myLoader = ({ src, width, quality }) => {
+        return `https://backendserver-kjd9q.ondigitalocean.app/${src}?w=${width}&q=${quality || 75}`
+      }
     return (
         <div>
 
@@ -35,7 +37,7 @@ const HeaderThree = () => {
                 expand="md">
                 <div className="navbar-brand">
 
-                        <Image src='/images/burger.svg' alt="me" width="100" height="100"></Image>
+                        <Image loader={myLoader} src='/images/burger.svg' alt="me" width="100" height="100"></Image>
                 </div>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
