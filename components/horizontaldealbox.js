@@ -1,4 +1,4 @@
-import React from 'react'
+/* import React from 'react'
 import Image from 'next/image';
 import {
     Button
@@ -17,3 +17,4 @@ const HorizontalDealBox = ({deal,toggleModal}) => {
 }
 
 export default HorizontalDealBox
+ */

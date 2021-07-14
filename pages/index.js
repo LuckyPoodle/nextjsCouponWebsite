@@ -43,6 +43,11 @@ function Home({ deals }) {
 
   Modal.setAppElement('#modalbind');
 
+  const myLoader = ({ src, width, quality }) => {
+    return `https://backendserver-kjd9q.ondigitalocean.app/${src}?w=${width}&q=${quality || 75}`
+  }
+  
+
 
   useEffect(() => {
     console.log(Date().toLocaleString());
@@ -115,7 +120,7 @@ function Home({ deals }) {
       <HeaderThree />
       <div className="instructionsbox">
         <div className="heading">
-          <Image className="inner headingicon" src='/images/burger.svg' alt="me" width="30" height="30" />
+          <Image loader={myLoader} className="inner headingicon" src='/images/burger.svg' alt="me" width="30" height="30" />
           <p className="inner headingtitle"> Digital Coupons</p>
         </div>
         <p className="headinginstruction">SCAN THE PROMO QR CODE ON KIOSKS</p>
@@ -165,11 +170,11 @@ function Home({ deals }) {
 
               <Link href="https://play.google.com/store/apps/details?id=com.oddle.burkerkingcustomerapp/" passHref={true}>
              
-              <Image loading="eager" src='/images/google-play-badge.png' alt="me" width="160px" height="47px"></Image>
+              <Image loader={myLoader}  loading="eager" src='/images/google-play-badge.png' alt="me" width="160px" height="47px"></Image>
              </Link>
 
              <Link href="https://apps.apple.com/sg/app/burger-king-singapore/id1233020916/" passHref={true}>
-             <Image loading="eager" src='/images/appstore.png' alt="me" width="160px" height="47px"></Image>
+             <Image loader={myLoader} loading="eager" src='/images/appstore.png' alt="me" width="160px" height="47px"></Image>
         
      
              </Link>

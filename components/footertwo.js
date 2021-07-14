@@ -2,6 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 
 const Footertwo = () => {
+  const myLoader = ({ src, width, quality }) => {
+    return `https://backendserver-kjd9q.ondigitalocean.app/${src}?w=${width}&q=${quality || 75}`
+  }
+  
+
   return (
     <div className="footerstick">
       <div className=" bg-green  text-white d-flex-column text-center">
@@ -11,14 +16,14 @@ const Footertwo = () => {
           <h4 className="footermessage1">Make it your way</h4>
           <ul className="list-unstyled list-inline">
             <li className="list-inline-item resize">
-            <Image loading="eager" src='/images/google-play-badge.png' alt="me" width="320px" height="94px"></Image>
+            <Image loader={myLoader} loading="eager" src='/images/google-play-badge.png' alt="me" width="320px" height="94px"></Image>
           
             </li>
             <li className="list-inline-item resize">
             <Image loading="eager" src='/images/appstore.png' alt="me" width="320px" height="94px"></Image>
          
             </li>
-            <div className="bottomcopyright">
+            <div loader={myLoader} className="bottomcopyright">
               {/* <div><span>Copyright 2021</span></div> */}
               <div className="small-font-size">Google Play and the Google Play logo are trademarks of Google LLC.
                 App Store and the App Store logo are trademarks of Apple Inc.</div>
