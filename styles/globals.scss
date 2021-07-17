@@ -15,6 +15,10 @@ $green_t7: #27692c;
 $green_t8: #010402;
 $green_t9: #a3dca8;
 
+// Colors
+
+
+
 $green_shadow: rgba(49, 131, 56, 0.5);
 $green_text_color_dark_bright: #fff;
 
@@ -224,64 +228,64 @@ $grid__cols: 12;
   // }
 }
 
-.modalcoupon{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+// .modalcoupon{
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+// }
 
-.modalcouponheading{
-  font-family: 'Anton', sans-serif;
-  font-size: 1em;
-}
+// .modalcouponheading{
+//   font-family: 'Anton', sans-serif;
+//   font-size: 1em;
+// }
 
-.modalcouponcode{
-  padding: 3px;
-  border: green;
-  border-style: dotted;
-  margin-bottom: 3px;
-  margin-right: 3px;
-}
-.modalrow{
-  display: flex;
-  flex-direction: row;
-}
+// .modalcouponcode{
+//   padding: 3px;
+//   border: green;
+//   border-style: dotted;
+//   margin-bottom: 3px;
+//   margin-right: 3px;
+// }
+// .modalrow{
+//   display: flex;
+//   flex-direction: row;
+// }
 
 //horizontaldealbox
-.horizontaldealboxcontainer{
-  display: flex;
-  border-radius: 6px;
-  box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.1) ;
+// .horizontaldealboxcontainer{
+//   display: flex;
+//   border-radius: 6px;
+//   box-shadow: 0 5px 30px 5px rgba(0, 0, 0, 0.1) ;
   
-  flex-direction: row;
-  padding: 20px;
-  width: 100%;
-}
-.horizontaldealboxcontent{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.horizontaldealboxtitle{
-  font-size: 50px;
-  width: 100%;
-  font-family: 'Anton', sans-serif;
-  text-align: center;
-}
-.horizontaldealboxdesc{
-  font-size: 30px;
-  width: 100%;
-  text-align: center;
+//   flex-direction: row;
+//   padding: 20px;
+//   width: 100%;
+// }
+// .horizontaldealboxcontent{
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+// }
+// .horizontaldealboxtitle{
+//   font-size: 50px;
+//   width: 100%;
+//   font-family: 'Anton', sans-serif;
+//   text-align: center;
+// }
+// .horizontaldealboxdesc{
+//   font-size: 30px;
+//   width: 100%;
+//   text-align: center;
 
-}
+// }
 
-.horizontaldealbutton{
-  width: 50%;
-  align-self: center;
-  text-align: center;
-  background-color: #0033A0;
-}
+// .horizontaldealbutton{
+//   width: 50%;
+//   align-self: center;
+//   text-align: center;
+//   background-color: #0033A0;
+// }
 
 
 

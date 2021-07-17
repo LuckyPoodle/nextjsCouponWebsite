@@ -7,13 +7,13 @@ import {
 
 
 //src={API_URL+deal.Image.formats.small.url}
-const DealBox = ({deal,toggleModal}) => {
+const DealBox = ({deal,toggle}) => {
 
     console.log(deal);
 
     return (
         <CardGroup className="dealboxcard">
-        <Card onClick={()=>toggleModal(deal.Code)}  className="justify-content-center align-items-center">
+        <Card onClick={()=>toggle(deal.Code)}  className="justify-content-center align-items-center">
    
           {deal.Image==null?<></>:<CardImg top width="100%" src={deal.Image.formats.small.url} alt="Promo Image" />}
           <CardBody>

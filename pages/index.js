@@ -1,22 +1,21 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import { useEffect, useState } from 'react';
 import QRCode from "react-qr-code";
 import { Container, Row, Col, Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Image from 'next/image'
 import HeaderThree from '../components/headerthree';
-
+import Component1 from '../components/Component1';
+import Popupburger from '../components/popupburger';
 import Footertwo from '../components/footertwo';
 import { API_URL } from '../config/index'
 import DealBox from '../components/dealbox'
-import HorizontalDealBox from '../components/horizontaldealbox'
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+
 
 import Modal from 'react-modal';
 import date from 'date-and-time';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faClipboard } from '@fortawesome/free-solid-svg-icons'
+
 const customStyles = {
 
   content: {
@@ -26,6 +25,9 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    backgroundColor:'rgba(245, 235, 219, 1)',
+    
+    
   },
 };
 
@@ -33,20 +35,18 @@ const customStyles = {
 
 function Home({ deals }) {
 
-  const [showComments, setShowComments] = useState(false);
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
-  const [tempArrangement, setTempArrangement] = useState(false);
-  const [couponCode, setCouponCode] = useState('coupon');
-  const [headerchange, setHeaderchange] = useState(false);
-  const [copied, setCopied] = useState(false);
 
-  Modal.setAppElement('#modalbind');
+  const [couponCode, setCouponCode] = useState('coupon');
+
+
+   Modal.setAppElement('#modalbind');
 
   const myLoader = ({ src, width, quality }) => {
     return `https://backendserver-kjd9q.ondigitalocean.app${src}?w=${width}&q=${quality || 75}`
   }
-  
+
 
 
   useEffect(() => {
@@ -54,25 +54,26 @@ function Home({ deals }) {
 
   }, [])
 
-  const toggleModal = (couponcode) => {
+  function toggle(couponcode) {
     setModal(!modal);
-    setCouponCode(couponcode);
+    setCouponCode(couponcode.toString());
 
   }
+
 
   const toggleModalClose = () => {
-    setModal(!modal);
-    setCopied(false);
+   setModal(!modal);
+  //   setCopied(false);
   }
 
-  const toggleTemp = () => {
-    setTempArrangement(!tempArrangement);
-  }
+  // const toggleTemp = () => {
+  //   setTempArrangement(!tempArrangement);
+  // }
 
-  const toggleheader = () => {
-    setHeaderchange(!headerchange);
+  // const toggleheader = () => {
+  //   setHeaderchange(!headerchange);
 
-  }
+  // }
 
 
   // function addCommentHandler(commentData) {
@@ -128,68 +129,57 @@ function Home({ deals }) {
 
       </div>
 
-      {deals==null?<span>No Deals Yet</span>: <Container className="container">
-          <div className="row">
+      {deals == null ? <span>No Deals Yet</span> : <Container className="container">
+        <div className="row">
 
-            {deals.map((deal) => (
+          {deals.map((deal) => (
 
-              <div key={deal.id} className="col-lg-4 col-6" style={{ padding: '5px' }}>
-                <DealBox  deal={deal} toggleModal={toggleModal} />
-              </div>
-
-
-
-            ))}
-          </div>
-
-
-
-          <Modal
-            isOpen={modal}
-
-            onRequestClose={toggleModalClose}
-            style={customStyles}
-            contentLabel="Redeem Coupon"
-          >
-
-
-
-
-            <div className="modalcoupon">
-              <span className="modalcouponheading">Redeem Coupon</span>
-              <div className="modalrow">
-                <span className="modalcouponcode">{couponCode.toString()}</span>
-
-                <CopyToClipboard key="o3" text={couponCode}
-                >
-                  <div>
-                    <FontAwesomeIcon style={{ width: "15px" }} icon={faClipboard} />
-                  </div>
-                </CopyToClipboard>
-              </div>
-
-              <Link href="https://play.google.com/store/apps/details?id=com.oddle.burkerkingcustomerapp/" passHref={true}>
-             
-              <Image loader={myLoader}  loading="eager" src='/images/google-play-badge.png' alt="me" width="160px" height="47px"></Image>
-             </Link>
-
-             <Link href="https://apps.apple.com/sg/app/burger-king-singapore/id1233020916/" passHref={true}>
-             <Image loader={myLoader} loading="eager" src='/images/appstore.png' alt="me" width="160px" height="47px"></Image>
-        
-     
-             </Link>
-           
-
+            <div key={deal.id} className="col-lg-4 col-6" style={{ padding: '5px' }}>
+              <DealBox deal={deal} toggle={toggle} />
             </div>
 
 
 
-          </Modal>
+          ))}
+        </div>
 
 
-        </Container>}
+          <Modal
+            isOpen={modal}
+          
+           
+            onRequestClose={toggleModalClose}
+            style={customStyles}
+            
+            contentLabel="Redeem Coupon"
+          >
 
-      
+            <Popupburger code={couponCode.toString()} />
+
+
+
+
+          </Modal>  
+
+        {/* <Modal
+          isOpen={modal}
+          toggle={toggleModal}
+          sm
+        >
+
+          <Component1 code={couponCode} />
+
+        </Modal> */}
+{/* 
+        <Modal size="sm" isOpen={modal} toggle={toggle} className="popup" >
+          <Component1 code={couponCode} />
+
+        </Modal> */}
+
+
+      </Container>}
+
+
 
       <Footertwo />
 
