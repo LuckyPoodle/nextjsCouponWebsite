@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react';
-import QRCode from "react-qr-code";
+
 import { Container, Row, Col, Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Image from 'next/image'
 import HeaderThree from '../components/headerthree';
-import Component1 from '../components/Component1';
+
 import Popupburger from '../components/popupburger';
 import Footertwo from '../components/footertwo';
 import { API_URL } from '../config/index'
@@ -14,7 +14,6 @@ import DealBox from '../components/dealbox'
 import Modal from 'react-modal';
 import date from 'date-and-time';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const customStyles = {
 
