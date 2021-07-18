@@ -1,7 +1,7 @@
-import Head from 'next/head'
-import { useEffect, useState } from 'react';
+import Head from 'next/head';
+import {  useState } from 'react';
 
-import { Container, Row, Col, Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Container} from 'reactstrap';
 import Image from 'next/image'
 
 import Popupburger from '../components/popupburger';
@@ -11,7 +11,7 @@ import DealBox from '../components/dealbox'
 
 
 import Modal from 'react-modal';
-
+import date from 'date-and-time';
 
 const customStyles = {
 
@@ -159,12 +159,10 @@ export async function getStaticProps() {
   // console.log(sgtime);
 
   const now = new Date();
-  console.log("now.getHours()")
-  console.log(now.getHours())
-  var sgtime=now.getHours()
-  // var sgtime = date.format(now, 'H [GMT]+0800');
-  // console.log(sgtime.slice(0, 2));
-  // sgtime = sgtime.slice(0, 2);
+  
+   var sgtime = date.format(now, 'H [GMT]+0800');
+ 
+  sgtime = sgtime.slice(0, 2);
 
   // console.log(sgtime);
 
@@ -172,7 +170,7 @@ export async function getStaticProps() {
 
     if (sgtime >= 17) {
 
-      console.log("sgtime >=17")
+
       // const res = await fetch(`${API_URL}/deals?_where[onlydisplayatnight]=true`)
       const res = await fetch(`${API_URL}/deals?_where[Dinner_Menu]=true`)
       const deals = await res.json()
@@ -184,7 +182,7 @@ export async function getStaticProps() {
   
     } else if (sgtime < 12) {
       
-      console.log("sgtime <12")
+     
       const res = await fetch(`${API_URL}/deals?_where[Breakfast_Menu]=true`)
       const deals = await res.json()
   
@@ -194,7 +192,7 @@ export async function getStaticProps() {
       }
   
     } else {
-      console.log('else1!!')
+     
       const res = await fetch(`${API_URL}/deals?_where[Lunch_Menu]=true`)
       const deals = await res.json()
   
