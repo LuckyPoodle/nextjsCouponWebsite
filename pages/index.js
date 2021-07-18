@@ -208,6 +208,8 @@ export async function getStaticProps() {
   console.log(sgtime.slice(0, 2));
   sgtime = sgtime.slice(0, 2);
 
+  console.log(sgtime);
+
   if (sgtime >= 17) {
     // const res = await fetch(`${API_URL}/deals?_where[onlydisplayatnight]=true`)
     const res = await fetch(`${API_URL}/deals?_where[Dinner_Menu]=true`)
