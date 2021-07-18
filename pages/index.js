@@ -3,16 +3,14 @@ import { useEffect, useState } from 'react';
 
 import { Container, Row, Col, Button, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Image from 'next/image'
-import HeaderThree from '../components/headerthree';
 
 import Popupburger from '../components/popupburger';
-import Footertwo from '../components/footertwo';
+
 import { API_URL } from '../config/index'
 import DealBox from '../components/dealbox'
 
 
 import Modal from 'react-modal';
-import date from 'date-and-time';
 
 
 const customStyles = {
@@ -48,18 +46,6 @@ function Home({ deals }) {
 
 
 
-  useEffect(() => {
-    console.log('Date().toLocaleString()');
-    console.log(Date().toLocaleString());
-    const now = new Date();
-    var sgtime = date.format(now, 'H [GMT]+0800');
-    console.log('sgtime.slice(0,2)');
- 
-    sgtime = sgtime.slice(0, 2);
-
-    console.log(sgtime);
-
-  }, [])
 
   function toggle(couponcode) {
     setModal(!modal);
@@ -72,44 +58,6 @@ function Home({ deals }) {
    setModal(!modal);
   //   setCopied(false);
   }
-
-  // const toggleTemp = () => {
-  //   setTempArrangement(!tempArrangement);
-  // }
-
-  // const toggleheader = () => {
-  //   setHeaderchange(!headerchange);
-
-  // }
-
-
-  // function addCommentHandler(commentData) {
-  //   console.log(commentData)
-  //   setLoading(true)
-
-  //   //send data to API
-  //   fetch('https://vouchercode123.herokuapp.com/redeem/'+commentData.code,{
-  //     method:'POST',
-  //     body:JSON.stringify(commentData),
-  //     headers:{
-  //       'Content-Type':'application/json'
-  //     }
-  //   }).then(
-  //     response=>{
-  //       response.json();
-  //       console.log('response is ');
-  //       console.log(response)
-  //       if (response.status==201){
-  //         setShowComments(true)
-
-  //       }
-  //       setLoading(false)
-
-  //     }
-
-  //     )
-  //   .then((data)=>console.log(data))
-  // }
 
 
 
@@ -125,7 +73,7 @@ function Home({ deals }) {
         <meta name="description" content="A Prototype" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HeaderThree />
+
       <div className="instructionsbox">
         <div className="heading">
           <Image loader={myLoader} className="inner headingicon" src='/images/burger.svg' alt="me" width="30" height="30" />
@@ -136,7 +84,7 @@ function Home({ deals }) {
 
       </div>
 
-      {deals == null ? <span>No Deals Yet</span> : <Container className="container">
+      {deals == null ? <div className="container"> <p style={{textAlign:"center",fontSize:"40px"}}>No Deals Yet</p></div> : <Container className="container">
         <div className="row">
 
           {deals.map((deal) => (
@@ -188,7 +136,6 @@ function Home({ deals }) {
 
 
 
-      <Footertwo />
 
     </div>
 
@@ -204,7 +151,7 @@ export default Home;
 
 
 export async function getStaticProps() {
-  console.log('getstaticprops!!')
+  
   // var today = new Date();
   // var time = today.getHours()
   // console.log("localestring");
@@ -212,44 +159,59 @@ export async function getStaticProps() {
   // console.log(sgtime);
 
   const now = new Date();
-  var sgtime = date.format(now, 'H [GMT]+0800');
-  console.log(sgtime.slice(0, 2));
-  sgtime = sgtime.slice(0, 2);
+  console.log("now.getHours()")
+  console.log(now.getHours())
+  var sgtime=now.getHours()
+  // var sgtime = date.format(now, 'H [GMT]+0800');
+  // console.log(sgtime.slice(0, 2));
+  // sgtime = sgtime.slice(0, 2);
 
-  console.log(sgtime);
+  // console.log(sgtime);
 
-  if (sgtime >= 17) {
+  try{
 
-    console.log("sgtime >=17")
-    // const res = await fetch(`${API_URL}/deals?_where[onlydisplayatnight]=true`)
-    const res = await fetch(`${API_URL}/deals?_where[Dinner_Menu]=true`)
-    const deals = await res.json()
+    if (sgtime >= 17) {
 
-    return {
-      props: { deals },
-      revalidate: 1,
+      console.log("sgtime >=17")
+      // const res = await fetch(`${API_URL}/deals?_where[onlydisplayatnight]=true`)
+      const res = await fetch(`${API_URL}/deals?_where[Dinner_Menu]=true`)
+      const deals = await res.json()
+  
+      return {
+        props: { deals },
+        revalidate: 1,
+      }
+  
+    } else if (sgtime < 12) {
+      
+      console.log("sgtime <12")
+      const res = await fetch(`${API_URL}/deals?_where[Breakfast_Menu]=true`)
+      const deals = await res.json()
+  
+      return {
+        props: { deals },
+        revalidate: 1,
+      }
+  
+    } else {
+      console.log('else1!!')
+      const res = await fetch(`${API_URL}/deals?_where[Lunch_Menu]=true`)
+      const deals = await res.json()
+  
+      return {
+        props: { deals },
+        revalidate: 1,
+      }
     }
 
-  } else if (sgtime < 12) {
-    
-    console.log("sgtime <12")
-    const res = await fetch(`${API_URL}/deals?_where[Breakfast_Menu]=true`)
-    const deals = await res.json()
-
+  }catch(error){
+    console.log(error)
+    const deals=null
     return {
-      props: { deals },
-      revalidate: 1,
+      props: {deals},
+
     }
 
-  } else {
-    console.log('else1!!')
-    const res = await fetch(`${API_URL}/deals?_where[Lunch_Menu]=true`)
-    const deals = await res.json()
-
-    return {
-      props: { deals },
-      revalidate: 1,
-    }
   }
 
 
