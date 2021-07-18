@@ -211,6 +211,8 @@ export async function getStaticProps() {
   console.log(sgtime);
 
   if (sgtime >= 17) {
+
+    console.log("sgtime >=17")
     // const res = await fetch(`${API_URL}/deals?_where[onlydisplayatnight]=true`)
     const res = await fetch(`${API_URL}/deals?_where[Dinner_Menu]=true`)
     const deals = await res.json()
@@ -221,6 +223,8 @@ export async function getStaticProps() {
     }
 
   } else if (sgtime < 12) {
+    
+    console.log("sgtime <12")
     const res = await fetch(`${API_URL}/deals?_where[Breakfast_Menu]=true`)
     const deals = await res.json()
 
@@ -230,6 +234,7 @@ export async function getStaticProps() {
     }
 
   } else {
+    console.log('else1!!')
     const res = await fetch(`${API_URL}/deals?_where[Lunch_Menu]=true`)
     const deals = await res.json()
 
