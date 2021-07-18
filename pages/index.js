@@ -51,12 +51,13 @@ function Home({ deals }) {
   useEffect(() => {
     console.log('Date().toLocaleString()');
     console.log(Date().toLocaleString());
+    const now = new Date();
     var sgtime = date.format(now, 'H [GMT]+0800');
     console.log('sgtime.slice(0,2)');
  
-  sgtime = sgtime.slice(0, 2);
+    sgtime = sgtime.slice(0, 2);
 
-  console.log(sgtime);
+    console.log(sgtime);
 
   }, [])
 
