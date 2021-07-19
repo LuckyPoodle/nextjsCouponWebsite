@@ -9,7 +9,7 @@ export default function DealPage({ deal }) {
   return (
    <div>
 
-       {deal.Title}
+       {deal?deal.Title:"hey"}
 
    </div>
   )
@@ -41,9 +41,12 @@ export async function getStaticPaths() {
     params: { id: deal.id.toString() },
   }))
 
+  console.log("--------------------PATHS-------------------");
+  console.log(paths)
+
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
 
