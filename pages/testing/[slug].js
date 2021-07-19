@@ -1,11 +1,13 @@
-import { API_URL } from '../../config/index'
+import { API_URL } from '../../config/index';
+import { useRouter } from 'next/router';
 export default function DealPage({ deal }) {
 
   console.log("IN DEAL PAGE..")
 
   console.log("deal...");
   console.log(deal)
- 
+  const router = useRouter()
+  console.log(router.query) 
 
   return (
    <div className="container">
