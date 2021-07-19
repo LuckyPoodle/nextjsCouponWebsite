@@ -38,6 +38,7 @@ function Home({ deals }) {
   const [modal, setModal] = useState(false);
 
   const [couponCode, setCouponCode] = useState('coupon');
+  const [mydeals,setMydeals]=useState();
 
 
    Modal.setAppElement('#modalbind');
@@ -51,7 +52,8 @@ function Home({ deals }) {
 
   useEffect(() => {
     if (data){
-      console.log(data)
+      setMydeals(data)
+      
     }
   }, [data])
 
@@ -93,6 +95,44 @@ function Home({ deals }) {
 
       </div>
 
+      
+      {mydeals == null ? <div className="container"> <p style={{textAlign:"center",fontSize:"40px"}}>No Deals Yet</p></div> : <Container className="container">
+        <div className="row">
+
+          {mydeals.map((deal) => (
+
+            <div key={deal.id} className="col-lg-4 col-6" style={{ padding: '5px' }}>
+              <DealBox deal={deal} toggle={toggle} />
+            </div>
+
+
+
+          ))}
+        </div>
+
+
+          <Modal
+            isOpen={modal}
+          
+           
+            onRequestClose={toggleModalClose}
+            style={customStyles}
+            
+            contentLabel="Redeem Coupon"
+          >
+
+            <Popupburger code={couponCode.toString()} />
+
+
+
+
+          </Modal>  
+
+   
+
+
+      </Container>}
+
       {deals == null ? <div className="container"> <p style={{textAlign:"center",fontSize:"40px"}}>No Deals Yet</p></div> : <Container className="container">
         <div className="row">
 
@@ -125,20 +165,7 @@ function Home({ deals }) {
 
           </Modal>  
 
-        {/* <Modal
-          isOpen={modal}
-          toggle={toggleModal}
-          sm
-        >
-
-          <Component1 code={couponCode} />
-
-        </Modal> */}
-{/* 
-        <Modal size="sm" isOpen={modal} toggle={toggle} className="popup" >
-          <Component1 code={couponCode} />
-
-        </Modal> */}
+   
 
 
       </Container>}
