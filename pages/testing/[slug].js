@@ -60,7 +60,9 @@ export async function getStaticProps({ params: { slug } }) {
   return {
     props: {
       deal: deals[0],
+      
     },
+    revalidate:10
   
   }
 }
