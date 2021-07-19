@@ -4,7 +4,7 @@ export default function DealPage({ deal }) {
  
 
   return (
-   <div>
+   <div className="container">
 
        {deal?deal.Title:"hey"}
 
