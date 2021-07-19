@@ -62,7 +62,7 @@ export async function getStaticProps({ params: { slug } }) {
       deal: deals[0],
       
     },
-    revalidate:10
+ 
   
   }
 }

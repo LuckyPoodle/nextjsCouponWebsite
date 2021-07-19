@@ -13,6 +13,8 @@ import DealBox from '../components/dealbox'
 import Modal from 'react-modal';
 import date from 'date-and-time';
 
+import useSWR  from 'swr';
+
 const customStyles = {
 
   content: {
@@ -45,6 +47,13 @@ function Home({ deals }) {
   }
 
 
+  const {data,error}=useSWR(`${API_URL}/deals`);
+
+  useEffect(() => {
+    if (data){
+      console.log(data)
+    }
+  }, [data])
 
 
   function toggle(couponcode) {
