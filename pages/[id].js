@@ -38,7 +38,7 @@ export async function getStaticPaths() {
   console.log(alldeals)
 
   const paths = alldeals.map((deal) => ({
-    params: { urlname: deal.urlname },
+    params: { id: deal.id.toString() },
   }))
 
   return {
@@ -47,11 +47,11 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params: { urlname } }) {
+export async function getStaticProps({ params: { id } }) {
 
     
-  console.log(urlname)
-    const res = await fetch(`${API_URL}/deals?_where[urlname]=${urlname}`)
+  
+    const res = await fetch(`${API_URL}/deals?_where[id]=${id}`)
     const deals = await res.json()
   return {
     props: {
