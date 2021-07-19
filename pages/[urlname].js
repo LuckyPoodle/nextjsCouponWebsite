@@ -1,6 +1,3 @@
-import Image from 'next/image'
-
-
 import { API_URL } from '../config/index'
 
 export default function DealPage({ deal }) {
@@ -35,14 +32,12 @@ export default function DealPage({ deal }) {
 export async function getStaticPaths() {
   const res = await fetch(`${API_URL}/deals`)
   const alldeals = await res.json();
-  console.log(alldeals)
+ 
 
   const paths = alldeals.map((deal) => ({
-    params: { id: deal.id.toString() },
+    params: { urlname: deal.urlname },
   }))
 
-  console.log("--------------------PATHS-------------------");
-  console.log(paths)
 
   return {
     paths,
@@ -50,11 +45,11 @@ export async function getStaticPaths() {
   }
 }
 
-export async function getStaticProps({ params: { id } }) {
+export async function getStaticProps({ params: { urlname } }) {
 
     
   
-    const res = await fetch(`${API_URL}/deals?_where[id]=${id}`)
+    const res = await fetch(`${API_URL}/deals?_where[id]=${urlname}`)
     const deals = await res.json()
   return {
     props: {
