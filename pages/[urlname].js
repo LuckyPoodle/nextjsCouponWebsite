@@ -1,6 +1,11 @@
 import { API_URL } from '../config/index'
 
 export default function DealPage({ deal }) {
+
+  console.log("IN DEAL PAGE..")
+
+  console.log("deal...");
+  console.log(deal)
  
 
   return (
