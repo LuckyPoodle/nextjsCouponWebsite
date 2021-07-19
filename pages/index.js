@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import {  useState } from 'react';
+import {  useState,useEffect } from 'react';
 
 import { Container} from 'reactstrap';
 import Image from 'next/image'
