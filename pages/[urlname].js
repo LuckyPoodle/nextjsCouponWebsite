@@ -49,7 +49,7 @@ export async function getStaticProps({ params: { urlname } }) {
 
     
   
-    const res = await fetch(`${API_URL}/deals?_where[id]=${urlname}`)
+    const res = await fetch(`${API_URL}/deals?_where[urlname]=${urlname}`)
     const deals = await res.json()
   return {
     props: {
