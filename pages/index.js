@@ -51,6 +51,9 @@ function Home({ deals }) {
   const {data,error}=useSWR(`${API_URL}/deals`);
 
   useEffect(() => {
+    console.log('API_URL');
+    console.log(API_URL);
+    console.log(`${API_URL}/deals`)
     if (data){
       setMydeals(data)
       
