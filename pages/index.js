@@ -203,20 +203,20 @@ export async function getStaticProps() {
  
   sgtime = sgtime.slice(0, 2);
 
-  // console.log(sgtime);
+  console.log(sgtime);
 
   try{
 
     if (sgtime >= 17) {
 
 
-      // const res = await fetch(`${API_URL}/deals?_where[onlydisplayatnight]=true`)
+      
       const res = await fetch(`${API_URL}/deals?_where[Dinner_Menu]=true`)
       const deals = await res.json()
   
       return {
         props: { deals },
-        revalidate: 1,
+   
       }
   
     } else if (sgtime < 12) {
@@ -227,7 +227,7 @@ export async function getStaticProps() {
   
       return {
         props: { deals },
-        revalidate: 1,
+      
       }
   
     } else {
@@ -237,7 +237,7 @@ export async function getStaticProps() {
   
       return {
         props: { deals },
-        revalidate: 1,
+       
       }
     }
 
