@@ -1,0 +1,120 @@
+// This is the project stylesheet
+
+// Colors
+$antique-white: rgba(245, 235, 219, 1);
+$black: rgba(0, 0, 0, 1);
+$crimson: rgba(218, 41, 28, 1);
+$dark-blue: rgba(0, 51, 160, 1);
+$orange: rgba(242, 169, 0, 1);
+$silver: rgba(196, 196, 196, 1);
+$transparent-black: rgba(0, 0, 0, 0.25);
+$white: rgba(255, 255, 255, 1);
+
+// Typographies
+@mixin raleway-34-extra-bold {
+    font-family: "Raleway";
+    font-size: 34px;
+    font-weight: 800;
+    line-height: normal;
+}
+@mixin raleway-36-extra-bold {
+    font-family: "Raleway";
+    font-size: 36px;
+    font-weight: 800;
+    line-height: normal;
+}
+@mixin roboto-17-regular {
+    font-family: "Roboto";
+    font-size: 17px;
+    font-weight: 400;
+    line-height: normal;
+}
+@mixin roboto-18-regular {
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+}
+@mixin roboto-24-bold {
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-25-bold {
+    font-family: "Roboto";
+    font-size: 25px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-26-bold {
+    font-family: "Roboto";
+    font-size: 26px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-36-bold {
+    font-family: "Roboto";
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-64-bold {
+    font-family: "Roboto";
+    font-size: 64px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.frame2 {
+    background-color: $orange;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.j1001358JuneECouponWmJd051 {
+    width: 309px;
+    height: 309px;
+    margin-bottom: 26px;
+}
+.redeemPromoCode {
+    color: $crimson;
+    margin-bottom: 26px;
+    @include roboto-36-bold;
+    text-align: center;
+}
+.couponCode {
+    background-color: $crimson;
+    margin-bottom: 26px;
+    border-radius: 6px;
+    padding: 38px 18px;
+    display: flex;
+    align-items: center;
+}
+.couponcode123 {
+    color: $white;
+    text-align: center;
+    @include roboto-26-bold;
+}
+.youMayAlsoBeInterestedIn {
+    color: $black;
+    margin-bottom: 26px;
+    @include roboto-18-regular;
+}
+.frame1 {
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.card {
+    flex: auto;
+
+}
+
+.smallimage{
+    width: 100px;
+    height: 100px;
+}

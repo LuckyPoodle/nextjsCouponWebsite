@@ -1,19 +1,20 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 
-import { Container } from 'reactstrap';
+import { Container, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import Image from 'next/image'
 
-import Popupburger from '../components/popupburger';
+
 
 import { API_URL } from '../config/index'
 import DealBox from '../components/dealbox'
 
 
-import Modal from 'react-modal';
+//import Modal from 'react-modal';
 import date from 'date-and-time';
 
 import useSWR from 'swr';
+import PopUp from '../components/PopUp';
 
 const customStyles = {
 
@@ -36,13 +37,18 @@ function Home({ deals }) {
 
   const [loading, setLoading] = useState(false);
   const [modal, setModal] = useState(false);
+  const [similarCategoryDeals, setSimilarCategoryDeals] = useState([]);
+  const [imageurl, setImageUrl] = useState('');
+
 
   const [couponCode, setCouponCode] = useState('coupon');
   const [mydeals, setMydeals] = useState();
+  const [currentlivedeals, setCurrentLivedeals] = useState();
 
 
 
-  Modal.setAppElement('#modalbind');
+
+  // Modal.setAppElement('#modalbind');
 
   const myLoader = ({ src, width, quality }) => {
     return `https://backendserver-kjd9q.ondigitalocean.app${src}?w=${width}&q=${quality || 75}`
@@ -63,16 +69,61 @@ function Home({ deals }) {
 
   useEffect(() => {
 
+
+
+    var livedeals = []
+
     if (data) {
-      setMydeals(data)
+      data.forEach(element => {
+        console.log('ITERATING!!!!!!!!!!');
+        var strapidate = new Date(element.ExpiryDay);
+        console.log(strapidate)
+        console.log(now)
+        if (element.LongRunningDeal!=true && strapidate < now) {
+          console.log("EXPIRED "+element.Title)
+
+        } else {
+          livedeals.push(element);
+        }
+
+      });
+
+      setCurrentLivedeals(livedeals);
+      setMydeals(livedeals);
 
     }
   }, [data])
 
 
-  function toggle(couponcode) {
+  function toggle(couponcode, categoryname, imageurl) {
+    console.log("CLICKED ON TOGGLE")
+    if (modal) {
+      setModal(!modal);
+      return;
+    } else {
+      setCouponCode(couponcode.toString());
+      getSimilarCategoryPdts(categoryname);
+      setImageUrl(imageurl);
+      console.log("SIMILAR CATEGORY: ");
+      console.log(similarCategoryDeals)
+
+    }
     setModal(!modal);
-    setCouponCode(couponcode.toString());
+
+  }
+
+  function getSimilarCategoryPdts(categoryname) {
+    var upsellitems = []
+    currentlivedeals.forEach(element => {
+      if (element.Category == categoryname) {
+        upsellitems.push(element)
+
+      }
+
+
+    });
+
+    setSimilarCategoryDeals(upsellitems);
 
   }
 
@@ -102,7 +153,7 @@ function Home({ deals }) {
           <Image loader={myLoader} className="inner headingicon" src='/images/burger.svg' alt="me" width="30" height="30" />
           <p className="inner headingtitle"> Digital Coupons</p>
         </div>
-        <p className="headinginstruction">SCAN THE PROMO QR CODE ON KIOSKS</p>
+        <p className="headinginstruction">USE PROMO CODE TO CHECK OUT AT KIOSK</p>
         {/* <Button onClick={toggleTemp}>TEMPORARY BUTTON Change Deals Layout</Button> */}
 
       </div>
@@ -123,7 +174,7 @@ function Home({ deals }) {
         </div>
 
 
-        <Modal
+        {/* <Modal
           isOpen={modal}
 
 
@@ -133,10 +184,19 @@ function Home({ deals }) {
           contentLabel="Redeem Coupon"
         >
 
-          <Popupburger code={couponCode.toString()} />
+<PopUp code={couponCode.toString()} imageurl={imageurl.toString()}  />
 
 
 
+
+        </Modal> */}
+
+        <Modal className="modalcss" isOpen={modal} toggle={toggle} >
+
+          <ModalBody>
+
+            <PopUp code={couponCode.toString()} imageurl={imageurl.toString()} upsells={similarCategoryDeals}/>
+          </ModalBody>
 
         </Modal>
 
@@ -159,7 +219,7 @@ function Home({ deals }) {
           ))}
         </div>
 
-
+        {/* 
         <Modal
           isOpen={modal}
 
@@ -170,10 +230,18 @@ function Home({ deals }) {
           contentLabel="Redeem Coupon"
         >
 
-          <Popupburger code={couponCode.toString()} />
+
+          <PopUp code={couponCode.toString()} imageurl={imageurl.toString()} />
 
 
 
+        </Modal> */}
+
+        <Modal className="modalcss" isOpen={modal} toggle={toggle} >
+
+        
+            <PopUp code={couponCode.toString()} imageurl={imageurl.toString()} upsells={similarCategoryDeals} />
+          
 
         </Modal>
 
@@ -216,8 +284,10 @@ export async function getStaticProps() {
 
   try {
     //fetching all day
-    const res = await fetch(`${API_URL}/deals?_where[Dinner_Menu]=true&[Breakfast_Menu]=true&[Lunch_Menu]=true`)
+    console.log('fetching longrunnig')
+    const res = await fetch(`${API_URL}/deals?_where[LongRunningDeal]=true`)
     const deals = await res.json()
+    //console.log(deals)
 
     return {
       props: { deals },
