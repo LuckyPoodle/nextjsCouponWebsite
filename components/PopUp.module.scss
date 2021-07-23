@@ -67,8 +67,9 @@ $white: rgba(255, 255, 255, 1);
 }
 
 .frame2 {
-    background-color: $orange;
+    background-color:$antique-white;
     display: flex;
+    border-radius:6px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -76,6 +77,7 @@ $white: rgba(255, 255, 255, 1);
 .j1001358JuneECouponWmJd051 {
     width: 309px;
     height: 309px;
+    margin-top: 26px;
     margin-bottom: 26px;
 }
 .redeemPromoCode {
@@ -87,34 +89,45 @@ $white: rgba(255, 255, 255, 1);
 .couponCode {
     background-color: $crimson;
     margin-bottom: 26px;
-    border-radius: 6px;
+   
     padding: 38px 18px;
+    
+    justify-content: center;
     display: flex;
     align-items: center;
 }
 .couponcode123 {
     color: $white;
+    align-items: center;
     text-align: center;
+    justify-content: center;
+    padding:5px;
     @include roboto-26-bold;
 }
+
 .youMayAlsoBeInterestedIn {
     color: $black;
     margin-bottom: 26px;
     @include roboto-18-regular;
 }
 .frame1 {
-    padding: 20px;
+   
     margin-bottom: 30px;
     display: flex;
-    flex-direction: row;
+  
+  
 }
 
 .card {
     flex: auto;
-
+    padding: 5px;
+    cursor: pointer;
+  
 }
 
 .smallimage{
     width: 100px;
     height: 100px;
 }
+
+

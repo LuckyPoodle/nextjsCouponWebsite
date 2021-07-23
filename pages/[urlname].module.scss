@@ -1,0 +1,184 @@
+// This is the project stylesheet
+
+// This is the project stylesheet
+
+// Colors
+$antique-white: rgba(245, 235, 219, 1);
+$black: rgba(0, 0, 0, 1);
+$crimson: rgba(218, 41, 28, 1);
+$dark-blue: rgba(0, 51, 160, 1);
+$orange: rgba(242, 169, 0, 1);
+$silver: rgba(196, 196, 196, 1);
+$transparent-black: rgba(0, 0, 0, 0.25);
+$white: rgba(255, 255, 255, 1);
+
+// Typographies
+@mixin raleway-34-extra-bold {
+    font-family: "Raleway";
+    font-size: 34px;
+    font-weight: 800;
+    line-height: normal;
+}
+@mixin raleway-36-extra-bold {
+    font-family: "Raleway";
+    font-size: 36px;
+    font-weight: 800;
+    line-height: normal;
+}
+@mixin roboto-17-regular {
+    font-family: "Roboto";
+    font-size: 17px;
+    font-weight: 400;
+    line-height: normal;
+}
+@mixin roboto-18-regular {
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+}
+@mixin roboto-24-bold {
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-25-bold {
+    font-family: "Roboto";
+    font-size: 25px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-26-bold {
+    font-family: "Roboto";
+    font-size: 26px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-27-bold {
+    font-family: "Roboto";
+    font-size: 27px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-36-bold {
+    font-family: "Roboto";
+    font-size: 36px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-64-bold {
+    font-family: "Roboto";
+    font-size: 64px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-91-bold {
+    font-family: "Roboto";
+    font-size: 91px;
+    font-weight: 700;
+    line-height: normal;
+}
+@mixin roboto-99-bold {
+    font-family: "Roboto";
+    font-size: 99px;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.frame6 {
+    padding: 10.26px 10.27px 10.27px 10.26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.frame5 {
+    margin-bottom: 32.17px;
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.frame3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ellipse2 {
+    width: 223.01px;
+    height: 74.89px;
+    margin-bottom: 8.55px;
+}
+.j1001358JuneECouponWmJd052 {
+    width: 222.99px;
+    height: 222.99px;
+    margin-bottom: 8.55px;
+}
+.rectangle7 {
+    width: 222.99px;
+    height: 54.26px;
+    background-color: $orange;
+    border-radius: 2px;
+}
+.frame4 {
+    padding: 0 5.38px 78.04px 5.39px;
+    position: relative;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+}
+.redeemDealNow {
+    height: 53.15px;
+    width: 244.18px;
+    color: $black;
+    display: flex;
+    text-align: center;
+    @include roboto-27-bold;
+}
+.couponCode {
+    background-color: $crimson;
+    padding: 23.41px 15.98px 23.42px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 53.15px;
+}
+.couponcode123 {
+    color: $white;
+    display: absolute;
+    width: 10%;
+    text-align: center;
+    @include roboto-27-bold;
+}
+.relatedDeals {
+    background-color: $white;
+    flex: 1;
+    align-self: stretch;
+}
+
+@media (max-width: 767px) {
+    .redeemDealNow {
+        padding-top: 15px;
+    }
+
+    .couponcode123 {
+        @include roboto-18-regular;
+        justify-content: center;
+        width: 100%;
+      
+      
+    }
+
+    .couponCode {
+    
+        width: 100%;
+        
+        align-items: center;
+        justify-content: center;
+    }
+}

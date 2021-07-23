@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./PopUp.module.scss";
+import Link from 'next/link';
 
 
 const PopUp = ({ code, imageurl, upsells }) => {
   console.log(code);
   console.log(imageurl);
   console.log(upsells);
-  const { data, error } = useSWR(sgtime >= 17 ? `${API_URL}/deals?_where[Dinner_Menu]=true` : sgtime < 12 ? `${API_URL}/deals?_where[Breakfast_Menu]=true` : `${API_URL}/deals?_where[Lunch_Menu]=true`);
+
+
+
   return (
     <div className={styles.frame2}>
       <img
@@ -30,12 +33,16 @@ const PopUp = ({ code, imageurl, upsells }) => {
         {upsells == null ? <hr></hr> :
           <div className={styles.frame1}>
             {upsells.map((item) => (
-              <div className={styles.card}>
-                <img
-                  alt=""
-                  className={styles.smallimage}
-                  src={item.Image.formats.small.url}
-                />
+              <div className={styles.card} >
+
+                <Link href={`/`+item.urlname}>
+                  <img
+                    alt=""
+                    className={styles.smallimage}
+                    src={item.Image.formats.small.url}
+                  />
+                </Link>
+
               </div>
             ))}
           </div>

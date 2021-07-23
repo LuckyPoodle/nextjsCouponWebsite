@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 
-import { Container, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Container, Modal, ModalBody,ModalHeader } from 'reactstrap';
 import Image from 'next/image'
 
 
@@ -79,8 +79,8 @@ function Home({ deals }) {
         var strapidate = new Date(element.ExpiryDay);
         console.log(strapidate)
         console.log(now)
-        if (element.LongRunningDeal!=true && strapidate < now) {
-          console.log("EXPIRED "+element.Title)
+        if (element.LongRunningDeal != true && strapidate < now) {
+          console.log("EXPIRED " + element.Title)
 
         } else {
           livedeals.push(element);
@@ -95,14 +95,14 @@ function Home({ deals }) {
   }, [data])
 
 
-  function toggle(couponcode, categoryname, imageurl) {
+  function toggle(couponcode, categoryname, imageurl, dealkey) {
     console.log("CLICKED ON TOGGLE")
     if (modal) {
       setModal(!modal);
       return;
     } else {
       setCouponCode(couponcode.toString());
-      getSimilarCategoryPdts(categoryname);
+      getSimilarCategoryPdts(categoryname, dealkey);
       setImageUrl(imageurl);
       console.log("SIMILAR CATEGORY: ");
       console.log(similarCategoryDeals)
@@ -112,18 +112,35 @@ function Home({ deals }) {
 
   }
 
-  function getSimilarCategoryPdts(categoryname) {
+  function getSimilarCategoryPdts(categoryname, dealkey) {
     var upsellitems = []
     currentlivedeals.forEach(element => {
-      if (element.Category == categoryname) {
+      if (element.Category == categoryname && element.id != dealkey) {
         upsellitems.push(element)
 
       }
-
-
     });
 
-    setSimilarCategoryDeals(upsellitems);
+    // Shuffle array
+    const shuffled = upsellitems.sort(() => 0.5 - Math.random());
+
+    if (shuffled.length >= 3) {
+      // Get sub-array of first n elements after shuffled
+      let selected = shuffled.slice(0, 3);
+
+      setSimilarCategoryDeals(selected);
+
+
+    } else {
+      
+      //lesser than 3 other same-category deals
+      setSimilarCategoryDeals(shuffled);
+
+    }
+
+
+
+    
 
   }
 
@@ -141,7 +158,7 @@ function Home({ deals }) {
   return (
 
 
-    <div id='modalbind'>
+    <>
       <Head>
         <title>Voucher App Prototype</title>
         <meta name="description" content="A Prototype" />
@@ -194,8 +211,8 @@ function Home({ deals }) {
         <Modal className="modalcss" isOpen={modal} toggle={toggle} >
 
           <ModalBody>
-
-            <PopUp code={couponCode.toString()} imageurl={imageurl.toString()} upsells={similarCategoryDeals}/>
+          <ModalHeader toggle={toggle}></ModalHeader>
+            <PopUp code={couponCode.toString()} imageurl={imageurl.toString()} upsells={similarCategoryDeals} />
           </ModalBody>
 
         </Modal>
@@ -239,9 +256,9 @@ function Home({ deals }) {
 
         <Modal className="modalcss" isOpen={modal} toggle={toggle} >
 
-        
-            <PopUp code={couponCode.toString()} imageurl={imageurl.toString()} upsells={similarCategoryDeals} />
-          
+        <ModalHeader toggle={toggle}></ModalHeader>
+          <PopUp code={couponCode.toString()} imageurl={imageurl.toString()} upsells={similarCategoryDeals} />
+
 
         </Modal>
 
@@ -253,7 +270,7 @@ function Home({ deals }) {
 
 
 
-    </div>
+    </>
 
   )
 }

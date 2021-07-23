@@ -13,7 +13,7 @@ const DealBox = ({deal,toggle}) => {
 
     return (
         <CardGroup className="dealboxcard">
-        <Card onClick={()=>toggle(deal.Code,deal.Category,deal.Image.formats.small.url)}  className="justify-content-center align-items-center">
+        <Card onClick={()=>toggle(deal.Code,deal.Category,deal.Image.formats.small.url,deal.id,deal.urlname)}  className="justify-content-center align-items-center">
    
           {deal.Image==null?<></>:<CardImg top width="100%" src={deal.Image.formats.small.url} alt="Promo Image" />}
           <CardBody>
