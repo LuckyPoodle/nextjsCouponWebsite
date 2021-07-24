@@ -1,12 +1,31 @@
 import React from "react";
+import {useState,  useEffect } from 'react';
 import styles from "./PopUp.module.scss";
 import Link from 'next/link';
 
 
 const PopUp = ({ code, imageurl, upsells }) => {
+
+  const [currentcode,setCurrentCode]=useState('');
+  const [currentimageurl,setCurrentimageurl]=useState('');
   console.log(code);
   console.log(imageurl);
   console.log(upsells);
+
+
+  useEffect(() => {
+
+    setCurrentCode(code);
+    setCurrentimageurl(imageurl);
+    
+  }, []);
+
+  function changecurrentcodeandimage(codetochange,imagetochange){
+    setCurrentimageurl(imagetochange);
+    setCurrentCode(codetochange);
+
+  }
+
 
 
 
@@ -15,14 +34,14 @@ const PopUp = ({ code, imageurl, upsells }) => {
       <img
         alt=""
         className={styles.j1001358JuneECouponWmJd051}
-        src={imageurl}
+        src={currentimageurl}
       />
       <p className={styles.redeemPromoCode}>
         REDEEM PROMO CODE{" "}
       </p>
       <div className={styles.couponCode}>
         <p className={styles.couponcode123}>
-          {code}
+          {currentcode}
         </p>
       </div>
       <p className={styles.youMayAlsoBeInterestedIn}>
@@ -35,13 +54,14 @@ const PopUp = ({ code, imageurl, upsells }) => {
             {upsells.map((item) => (
               <div className={styles.card} >
 
-                <Link href={`/`+item.urlname}>
+                
                   <img
+                  onClick={()=>changecurrentcodeandimage(item.Code,item.Image.formats.small.url)}
                     alt=""
                     className={styles.smallimage}
                     src={item.Image.formats.small.url}
                   />
-                </Link>
+                
 
               </div>
             ))}
