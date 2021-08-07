@@ -76,7 +76,7 @@ function Home({ deals }) {
     if (data) {
       data.forEach(element => {
         console.log('ITERATING!!!!!!!!!!');
-        var strapidate = new Date(element.ExpiryDay);
+        var strapidate = new Date(element.LastActiveDay);
         console.log(strapidate)
         console.log(now)
         if (element.LongRunningDeal != true && strapidate < now) {
